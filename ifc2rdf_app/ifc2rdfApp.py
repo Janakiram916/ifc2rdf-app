@@ -4,7 +4,7 @@ import traceback
 import flet as ft
 from icecream import ic
 
-from ifc2rdftool.ifc2rdf_tool import create_rdf_graph_from_ifc
+from ifc2rdftool.ifc2rdf_tool import create_rdf_graph_from_ifc_file_path
 
 
 def main(page: ft.Page):
@@ -26,7 +26,7 @@ def main(page: ft.Page):
                 os.remove(rdf_path)
             try:
                 ic("Start extracting data from IFC File")
-                graph = create_rdf_graph_from_ifc(ifc_file)
+                graph = create_rdf_graph_from_ifc_file_path(ifc_file)
                 ic("Start creation of RDF Graph")
                 graph.serialize(destination=rdf_path, format='ttl')
             except Exception as e:
